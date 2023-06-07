@@ -10,4 +10,3 @@ for i in per_cent.values():
 print(deposit)
 
 print('Максимальная сумма, которую вы можете заработать —', max(deposit))
-
