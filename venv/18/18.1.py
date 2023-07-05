@@ -3,5 +3,3 @@ def is_leap_year(x):
         return True
     else:
         return False
-
-print(is_leap_year(1704))

@@ -1,7 +1,6 @@
-cost_min = 990
-cost_max = 1390
-
 def conference_cost():
+    cost_min = 990
+    cost_max = 1390
     total_prise = int()
     number_of_persons = int(input('Сколько вам нужно билетов? '))
     for i in range(number_of_persons):
