@@ -15,10 +15,10 @@ def checks(obj, file):
     for i in obj:
         count += 1
         test = 'Pass'
+        if len(i) != len(file):
+            print(f'Ответ {count}: количество строк ответа {len(i)}, должно быть {len(file)}!')
+            test = 'Failed'
         for key, value in file.items():
-            if len(i) != len(file):
-                print(f'Ответ {count}: количество строк ответа {len(i)}, должно быть {len(file)}!')
-                test = 'Failed'
             if key not in i.keys():
                 print(f'Поля {key} нет в ответе')
                 test = 'Failed'
