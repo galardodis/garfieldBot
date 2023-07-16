@@ -48,6 +48,7 @@ def find(element, array):
     else:
         print(f'Индекс меньшего элемента {len(array) - 1}, индекс большего/самого элемента отсутствует')
 
+
 while True:
     try:
         array = [int(i) for i in input('Введите последовательность чисел через пробел: ').split()]
