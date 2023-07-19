@@ -1,8 +1,7 @@
 red = redis.Redis(
     host='ваш хост',
-    port=ваш
-порт,
-password = пароль
+    port=ваш порт,
+    password=пароль
 )
 
 cont = True
