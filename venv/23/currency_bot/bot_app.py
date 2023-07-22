@@ -1,4 +1,5 @@
 import telebot
+import time
 from tokens import TELE_TOKEN
 from extensions import CryptoConverter, APIException, ls
 
@@ -44,12 +45,16 @@ def convert(message: telebot.types.Message):
 
         quote, base, amount = map(str.capitalize, values)
         total_base = CryptoConverter.get_price(quote, base, amount)
+
     except APIException as e:
         bot.reply_to(message, f'Ты ошибся с вводом\n{e}')
+
     except Exception as e:
         bot.reply_to(message, f'Не удалось обработать команду \n{e}')
+
     else:
-        text = f'{amount} {quote} равен {total_base} {base}'
+        text = f'{amount} {quote} = {total_base} {base}\n' \
+               f'Согласно сайту www.cryptocompare.com на {time.strftime("%d %b %Y %H:%M:%S")}'
         bot.send_message(message.chat.id, text)
 
 
