@@ -43,7 +43,7 @@ def convert(message: telebot.types.Message):
             raise APIException('Слишком мало параметров :( '
                                '\n\nПопробуй ешё раз\nПример ввода: Доллар Рубль 10')
 
-        quote, base, amount = map(str.capitalize, values)
+        quote, base, amount = values[0].capitalize(), values[1].capitalize(), values[2]
         total_base = CryptoConverter.get_price(quote, base, amount)
 
     except APIException as e:
