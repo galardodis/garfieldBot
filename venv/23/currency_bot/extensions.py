@@ -1,6 +1,5 @@
 import requests
 import json
-from get_currencie import get_currencie
 
 currencie = {
     'Доллар': 'USD',
