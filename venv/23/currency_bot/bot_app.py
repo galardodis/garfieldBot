@@ -23,6 +23,7 @@ def help(message: telebot.types.Message):
         text = '\n'.join((text, key))
     bot.send_message(message.chat.id, text)
 
+
 @bot.message_handler(commands=[])
 def help(message: telebot.types.Message):
     raise APIException('Я не знаю такой команды')

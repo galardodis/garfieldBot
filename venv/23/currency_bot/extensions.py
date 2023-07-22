@@ -1,7 +1,6 @@
 import requests
 import json
 
-
 ls = {
     'Доллар': 'USD',
     'Рубль': 'RUB',
@@ -20,6 +19,7 @@ class CryptoConverter:
 
     def all_currency():
         pass
+
     @staticmethod
     def get_price(quote=str, base=str, amount=str):
         try:
