@@ -18,9 +18,6 @@ class APIException(Exception):
 
 class CryptoConverter:
 
-    def all_currency():
-        pass
-
     @staticmethod
     def get_price(quote=str, base=str, amount=str):
         try:
