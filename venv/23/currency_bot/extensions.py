@@ -1,7 +1,8 @@
 import requests
 import json
+from get_currencie import get_currencie
 
-ls = {
+currencie = {
     'Доллар': 'USD',
     'Рубль': 'RUB',
     'Евро': 'EUR',
@@ -23,13 +24,13 @@ class CryptoConverter:
     @staticmethod
     def get_price(quote=str, base=str, amount=str):
         try:
-            quote_ticker = ls[quote]
+            quote_ticker = currencie[quote]
         except KeyError:
             raise APIException(f'Я не знаю волюту "{quote}"'
                                f'\n\nПопробуй ешё раз\nПример ввода: Доллар Рубль 10')
 
         try:
-            base_ticket = ls[base]
+            base_ticket = currencie[base]
         except KeyError:
             raise APIException(f'Я не знаю волюту "{base}" '
                                f'\n\nПопробуй ешё раз\nПример ввода: Доллар Рубль 10')

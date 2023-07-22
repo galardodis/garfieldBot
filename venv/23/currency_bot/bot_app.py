@@ -1,7 +1,7 @@
 import telebot
 import time
 from tokens import TELE_TOKEN
-from extensions import CryptoConverter, APIException, ls
+from extensions import CryptoConverter, APIException, currencie
 
 bot = telebot.TeleBot(TELE_TOKEN)
 
@@ -20,7 +20,7 @@ def help(message: telebot.types.Message):
 @bot.message_handler(commands=['values'])
 def help(message: telebot.types.Message):
     text = 'Доступные валюты:'
-    for key in ls.keys():
+    for key in dict(sorted(currencie.items())):
         text = '\n'.join((text, key))
     bot.send_message(message.chat.id, text)
 
