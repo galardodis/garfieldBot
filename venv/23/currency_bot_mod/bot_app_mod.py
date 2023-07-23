@@ -2,7 +2,7 @@ import telebot
 import time
 from tokens import TELE_TOKEN
 from extensions_mod import CryptoConverter, APIException, currencie
-from background import keep_alive  #постоянный онлайн
+# from background import keep_alive  #постоянный онлайн
 
 bot = telebot.TeleBot(TELE_TOKEN)
 

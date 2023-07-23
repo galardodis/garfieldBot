@@ -6,7 +6,7 @@ import text
 
 def get_currencie():
     currencie = {}
-    html = requests.get(text.url).content
+    html = requests.get(text.url_wiki).content
     tree = lxml.html.document_fromstring(html)
     root = BeautifulSoup(html, 'html.parser')
     el = root.find('tbody').find_all('tr')
