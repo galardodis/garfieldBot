@@ -2,23 +2,35 @@ import telebot
 import time
 from tokens import TELE_TOKEN
 from extensions_mod import CryptoConverter, APIException, currencie
+from background import keep_alive  #постоянный онлайн
 
 bot = telebot.TeleBot(TELE_TOKEN)
 
 
-@bot.message_handler(commands=['start', 'help'])
-def help(message: telebot.types.Message):
-    text = 'Чтобы начать работу введите мне команду в формате: \n\n' \
+@bot.message_handler(commands=['start'])
+def start(message: telebot.types.Message):
+    text = 'Привет! Я Бот-Конвертер валют и я могу:  \n\n' \
+           '- Показать список доступных валют и их кодов через команду: /values' \
+           '\n\n-- Вывести конвертацию валюты через команду:\n' \
            '<Код валюты для перевода>  ' \
            '<Код валюты в кототую нужно перевести>  ' \
-           '<количество переводимой валюты>' \
+           '<Количество переводимой валюты>' \
            '\n\nПример ввода: USD RUB 10' \
-           '\n\nДля получения списка поддерживаемых валют и их кодов введите: /values'
+           '\n\n' \
+           'Напомнить, что я могу через команду: /help'
+    bot.send_message(message.chat.id, text)
+
+
+@bot.message_handler(commands=['help'])
+def helpp(message: telebot.types.Message):
+    text = 'Чтобы начать конвертацию, введите команду в следующем формате: \n' \
+           '<Код валюты для перевода>  <Код валюты в кототую нужно перевести> <Количество переводимой валюты>' \
+           '\n\nПример ввода: USD RUB 10 \n\nЧтобы увидеть список всех доступных валют и их кодов введите команду:\n/values'
     bot.send_message(message.chat.id, text)
 
 
 @bot.message_handler(commands=['values'])
-def help(message: telebot.types.Message):
+def values(message: telebot.types.Message):
     text = 'Доступные валюты:'
     for key in dict(sorted(currencie.items())):
         text = '\n'.join((text, f'{key} - {currencie[key]}'))
@@ -58,4 +70,5 @@ def convert(message: telebot.types.Message):
         bot.send_message(message.chat.id, text)
 
 
+# keep_alive() #постоянный онлайн
 bot.polling()
