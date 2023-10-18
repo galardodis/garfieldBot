@@ -1,12 +1,12 @@
 import requests
 import lxml.html
 import json
-import urls
+import url
 
 key = 'trixe'
 answer = []
 
-req = requests.post(urls.url_search, data={f'query': {key}, 'category': '', 'page': ''}).content
+req = requests.post(url.url_search, data={f'query': {key}, 'category': '', 'page': ''}).content
 data = json.loads(req)
 a = lxml.html.fromstring(data['itemsHtml'])
 href = a.xpath('//a[@class="search-results-items-offer-img__wrap"]/@href')
