@@ -22,6 +22,7 @@ def help(message: telebot.types.Message):
 
 @bot.message_handler(content_types=['text', ])
 def convert(message: telebot.types.Message):
+    print("SOME KLICK")
     text = message.text
     products = search(text)
     if products:
@@ -37,14 +38,14 @@ def convert(message: telebot.types.Message):
                                )
             except Exception as e:
                 print('-' * 1000)
-                print(f'{e}\n{pr["href"]}')
+                # print(f'{e}\n{pr["href"]}')
                 print(len(pr['img']))
                 print(f'{pr["img"]}\n'
                       f'{pr["name"]}\n'
                       f'_{pr["art"]}_\n'
                       f'*Стоимость {pr["prise"]}*\n'
                       f'[Заказать]({pr["href"]})', )
-                bot.send_message(message.chat.id, 'ERROR')
+                # bot.send_message(message.chat.id, 'ERROR')
                 continue
     else:
         bot.send_message(message.chat.id, 'По вашему запросу ничего не найдено :(')

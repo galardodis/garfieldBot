@@ -6,6 +6,7 @@ from special_symbols import sp_symbols
 
 
 def search(text=''):
+    print()
     req = requests.post(url.url_search, data={f'query': {text}, 'category': '', 'page': ''}).content
     data = json.loads(req)
     if len(data['itemsHtml']) != 0:
